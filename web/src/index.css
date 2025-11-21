@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --coral-pink: #FF6B6B;
+  --sunset-orange: #FF9F45;
+  --electric-purple: #845EC2;
+  --sky-blue: #4E8397;
+  --mint-green: #4FB06D;
+  --golden-yellow: #FFC93C;
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-primary-bg text-text-primary font-primary;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary-bg;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-coral-pink rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-sunset-orange;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  /* Playful card styles */
+  .card-playful {
+    @apply bg-white rounded-2xl p-6 shadow-playful border border-coral-pink/20 transition-all duration-300 hover:shadow-vibrant hover:scale-105 hover:border-coral-pink/40;
+  }
+  
+  .card-gradient {
+    @apply bg-gradient-to-br from-white to-accent-bg rounded-2xl p-6 shadow-playful border border-coral-pink/20 transition-all duration-300 hover:shadow-vibrant hover:scale-105;
+  }
+  
+  /* Vibrant buttons */
+  .btn-vibrant {
+    @apply bg-gradient-coral text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-vibrant hover:scale-105 active:scale-95 font-secondary;
+  }
+  
+  .btn-playful {
+    @apply bg-gradient-vibrant text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-vibrant-lg hover:scale-105 active:scale-95 font-secondary bg-300%;
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite;
+  }
+  
+  .btn-outline-vibrant {
+    @apply border-2 border-coral-pink text-coral-pink font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-coral-pink hover:text-white hover:shadow-vibrant active:scale-95 font-secondary;
+  }
+  
+  /* Input fields with personality */
+  .input-playful {
+    @apply bg-white/80 border-2 border-coral-pink/20 rounded-xl px-4 py-3 text-text-primary placeholder-text-secondary focus:outline-none focus:border-coral-pink focus:ring-4 focus:ring-coral-pink/20 transition-all duration-300 font-primary;
+  }
+  
+  /* Tab buttons with bounce */
+  .tab-playful {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 text-text-secondary hover:text-coral-pink font-secondary;
+  }
+  
+  .tab-playful.active {
+    @apply bg-gradient-coral text-white shadow-vibrant transform scale-105;
+  }
+  
+  /* Loading animations */
+  .loader-paw {
+    @apply animate-paw-print text-coral-pink;
+  }
+  
+  .loader-bounce {
+    @apply animate-bounce-slow text-sunset-orange;
+  }
+  
+  /* Floating elements */
+  .float-element {
+    @apply animate-float;
+  }
+  
+  /* Gradient text */
+  .text-gradient-vibrant {
+    @apply bg-gradient-vibrant bg-clip-text text-transparent bg-300%;
+    background-size: 300% 300%;
+    animation: gradientShift 3s ease infinite;
+  }
+  
+  .text-gradient-coral {
+    @apply bg-gradient-coral bg-clip-text text-transparent;
+  }
+  
+  /* Glassmorphism with color */
+  .glass-vibrant {
+    @apply bg-white/60 backdrop-blur-lg border border-coral-pink/20 rounded-2xl shadow-playful;
+  }
+  
+  /* Notification badges */
+  .badge-vibrant {
+    @apply bg-gradient-coral text-white text-xs font-bold px-2 py-1 rounded-full animate-pulse-glow;
+  }
+  
+  /* Icon containers */
+  .icon-playful {
+    @apply w-12 h-12 bg-gradient-coral rounded-xl flex items-center justify-center text-white shadow-vibrant transition-all duration-300 hover:scale-110 hover:shadow-vibrant-lg;
+  }
+  
+  .icon-secondary {
+    @apply w-12 h-12 bg-gradient-sunset rounded-xl flex items-center justify-center text-white shadow-playful transition-all duration-300 hover:scale-110 hover:shadow-vibrant;
+  }
+  
+  /* Stats cards */
+  .stat-card {
+    @apply card-playful group;
+  }
+  
+  .stat-card:hover .stat-icon {
+    @apply animate-wiggle;
+  }
+  
+  /* Navigation items */
+  .nav-item {
+    @apply flex items-center space-x-3 px-4 py-3 rounded-xl text-text-secondary hover:text-coral-pink hover:bg-coral-pink/10 transition-all duration-300 font-secondary;
+  }
+  
+  .nav-item.active {
+    @apply text-coral-pink bg-coral-pink/10 font-semibold;
+  }
+  
+  /* Hero section */
+  .hero-gradient {
+    @apply bg-gradient-vibrant bg-300%;
+    background-size: 300% 300%;
+    animation: gradientShift 6s ease infinite;
+  }
+  
+  /* Pattern backgrounds */
+  .pattern-paws {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FF6B6B' fill-opacity='0.05'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .pattern-bones {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23FF9F45' fill-opacity='0.05'%3E%3Cpath d='M30 15c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15-6.7-15-15-15z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-shadow-vibrant {
+    text-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+  }
+  
+  .backdrop-glow {
+    backdrop-filter: blur(16px) brightness(1.05);
+  }
+  
+  .hover-lift {
+    transition: all var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+  }
+  
+  .stagger-animation > * {
+    animation: fadeInUp 0.6s ease-out backwards;
+  }
+  
+  .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+}
+
+/* Responsive font sizes */
+@media (max-width: 640px) {
+  .text-responsive-xl {
+    @apply text-2xl;
+  }
+  
+  .text-responsive-lg {
+    @apply text-xl;
+  }
+  
+  .text-responsive-md {
+    @apply text-lg;
+  }
+}
+
+/* Focus visible for accessibility */
+.focus-visible:focus-visible {
+  @apply outline-2 outline-coral-pink outline-offset-2;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
